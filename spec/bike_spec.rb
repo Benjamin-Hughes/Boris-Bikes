@@ -11,4 +11,9 @@ describe Bike do
 	it "Expects a new bike to be working by default" do
 		expect(subject.working?).to eq true
 	end
+
+	it "Expects report_broken to set .working? to false" do
+		bike.report_broken
+		expect(subject.working?).to eq false
+	end
 end

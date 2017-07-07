@@ -30,7 +30,7 @@ class DockingStation
 	end
 
 	def full?
-		@bikes.length == DEFAULT_CAPACITY ? true : false
+		@bikes.length == @capacity ? true : false
 	end
 
 	def empty?

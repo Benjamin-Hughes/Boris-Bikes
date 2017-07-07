@@ -9,20 +9,20 @@ describe DockingStation do
 
 	let(:station) {DockingStation.new(15)}
 
-	it "DockingStation respond to release_bike" do
+	it "responds to release_bike" do
 		expect(subject).to respond_to(:release_bike)
 	end
-	it "Docking station raises an error if it tries to release a bike when none are available" do
+	it "raises an error if it tries to release a bike when none are available" do
 		expect { subject.release_bike }.to raise_error("No bikes available to release")
 	end
 
-	it "DockingStation to dock a bike" do
+	it "successfully docks a bike" do
 		expect(subject.bikes.length).to eq 0
 		subject.dock(bike)
 		expect(subject.bikes.length).to eq 1
 	end
 
-	it "DockingStation to return a bike after release_bike called" do
+	it "returns a bike after release_bike called" do
 		subject.dock(bike)
 		expect(subject.release_bike).to be bike
 	end
@@ -32,7 +32,7 @@ describe DockingStation do
 		subject.dock(broken_bike)
 		expect((subject.release_bike).working?).to eq true
 	end
-	it "DockingStation to raise error if docking station is full and user tries to dock a bike" do
+	it "raises an error if docking station is full and user tries to dock a bike" do
 		DockingStation::DEFAULT_CAPACITY.times {subject.dock(bike)}
 		expect { subject.dock(bike) }.to raise_error("Docking Station full")
 	end
@@ -45,7 +45,7 @@ describe DockingStation do
 		expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
 	end
 
-	it "checks to see that DockingStations accept both working and broken bikes" do
+	it "accepts both working and broken bikes" do
 		subject.dock(bike)
 		expect(subject.bikes.length).to eq 1
 		subject.dock(broken_bike)
