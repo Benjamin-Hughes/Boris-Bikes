@@ -13,21 +13,9 @@ class DockingStation
 	end
 
 	def release_bike
-		released_bike = 0
-		#Bike.new
-		raise "No bikes available to release" if empty?
-		@bikes.each_with_index do |bike, index|
-		#binding.pry
-			if @bikes[index].working? == true
-				#binding.pry
-				released_bike = bike
-				@bikes.delete_at(index)
-			#binding.pry
-				break
-			end
-		end
-		released_bike
-		#@bikes.pop
+		fail 'No bikes available to release' if empty?
+		fail 'No working bikes available' if working_bike_array.empty?
+		@bikes.delete(working_bike_array.pop)
 	end
 
 	def dock(bike)
@@ -36,8 +24,11 @@ class DockingStation
 		"This bike is broken!" if bike.working? == false
 	end
 
-
 	private
+	def working_bike_array
+		@bikes.reject { |bike| bike.working? == false}
+	end
+
 	def full?
 		@bikes.length == DEFAULT_CAPACITY ? true : false
 	end

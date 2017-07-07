@@ -1,5 +1,5 @@
 
-require 'dockingStation'
+require 'DockingStation'
 require 'bike'
 
 describe DockingStation do
