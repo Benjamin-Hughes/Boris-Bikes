@@ -26,7 +26,7 @@ class DockingStation
 
 	private
 	def working_bike_array
-		@bikes.reject { |bike| bike.working? == false}
+		@bikes.reject { |bike| bike.working? == false }
 	end
 
 	def full?
